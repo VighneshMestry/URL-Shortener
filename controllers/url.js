@@ -16,7 +16,9 @@ async function handleCreateShortUrl(req, res) {
     ],
   });
 
-  return res.status(201).json({ Success: "Short URL created", url: newUrl });
+  return res.render("home", {
+    newUrl: newUrl
+  });
 }
 
 async function handleGetAnalytics(req, res) {
