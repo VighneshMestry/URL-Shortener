@@ -12,6 +12,7 @@ async function handleCreateShortUrl(req, res) {
     shortUrl: shortUrl,
     redirectedUrl: body.url,
     visitedHistory: [],
+    createdBy: req.user._id
   });
 
   return res.render("home", {
