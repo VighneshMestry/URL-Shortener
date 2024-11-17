@@ -17,7 +17,7 @@ async function handleUserLogin(req, res) {
   const { email, password } = req.body;
   const user = await User.findOne({
     email,
-    password
+    password,
   });
 
   if(!user) {
@@ -25,7 +25,7 @@ async function handleUserLogin(req, res) {
   }
 
   const token = setUser(user);
-  res.cookie("uid", token);
+  res.cookie("token", token);
   return res.redirect("/home");
 }
 
