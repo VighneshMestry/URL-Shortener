@@ -1,10 +1,10 @@
 const { getUser } = require("../services/auth");
 
 function checkUserLogin(req, res, next) {
-    const sessionId = req.cookies?.uid;
-    if(!sessionId) return res.redirect("/login");
+    const token = req.cookies?.uid;
+    if(!token) return res.redirect("/login");
 
-    const user = getUser(sessionId);
+    const user = getUser(token);
     console.log("User", user);
     if(!user) return res.redirect("/login");
 
@@ -13,8 +13,8 @@ function checkUserLogin(req, res, next) {
 }
 
 function checkAuth(req, res, next) {
-    const sessionId = req.cookies?.uid;
-    const user = getUser(sessionId);
+    const token = req.cookies?.uid;
+    const user = getUser(token);
     req.user = user;
     next();
 }
